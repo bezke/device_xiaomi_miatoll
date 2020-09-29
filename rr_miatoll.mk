@@ -4,15 +4,21 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Inherit from miatoll device
 $(call inherit-product, device/xiaomi/miatoll/device.mk)
-$(call inherit-product, vendor/du/config/common_full_phone.mk)
 
-# Inherit build type
-DU_BUILD_TYPE := UNOFFICIAL
-ro.DU.maintainer=bezke
+# Inherit some common Resurrection stuff
+$(call inherit-product, vendor/rr/config/common_full_phone.mk)
+
+# Bootanimation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := du_miatoll
+# RR Stuffs
+TARGET_FACE_UNLOCK_SUPPORTED := true
+RR_BUILDTYPE := Unofficial
+
+# Device identifier. This must come after all inclusions
+PRODUCT_NAME := rr_miatoll
 PRODUCT_DEVICE := miatoll
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := SM6250
